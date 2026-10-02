@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="NICODE Servicios Informáticos: soporte técnico, mantenimiento, redes y soluciones informáticas.">
+  <title>NICODE | Servicios Informáticos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header class="header" id="header">
+    <a class="logo" href="#inicio"><img class="logo-img" src="assets/logo.png" alt="NICODE">
+      <div><strong>NICODE</strong><small>SERVICIOS INFORMÁTICOS</small></div>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#inicio">Inicio</a><a href="#nosotros">Nosotros</a><a href="#servicios">Servicios</a><a
+        href="#cotizacion">Cotización</a><a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-whatsapp header-wa" id="headerWhatsApp" href="#" target="_blank">WhatsApp</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+  </header>
+
+  <main>
+    <section class="hero hero-v2" id="inicio">
+      <div class="slides">
+        <article class="slide active"
+          style="--bg:url('https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1800&q=85')">
+          <img class="slide-img" loading="lazy" decoding="async" aria-hidden="true"
+            src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=800&q=70"
+            srcset="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=800&q=70 800w, https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1200&q=70 1200w, https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1800&q=85 1800w"
+            sizes="(max-width:520px) 520px, (max-width:850px) 680px, 1800px" alt="">
+          <div class="hero-content">
+            <p class="eyebrow">TECNOLOGÍA • SOPORTE • CONFIANZA</p>
+            <h1>Soluciones informáticas para tu negocio</h1>
+            <p>Infraestructura tecnológica confiable, segura y siempre disponible. Ofrecemos asistencia técnica
+              profesional para proteger, optimizar y potenciar tus equipos, redes y sistemas.</p>
+            <div class="hero-actions"><a class="btn btn-primary" href="#cotizacion">Solicitar cotización</a><a
+                class="btn btn-light" id="heroWA1" href="#" target="_blank">Hablar por WhatsApp</a></div>
+          </div>
+        </article>
+        <article class="slide"
+          style="--bg:url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=85')">
+          <img class="slide-img" loading="lazy" decoding="async" aria-hidden="true"
+            src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=70"
+            srcset="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=70 800w, https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=70 1200w, https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=85 1800w"
+            sizes="(max-width:520px) 520px, (max-width:850px) 680px, 1800px" alt="">
+          <div class="hero-content">
+            <p class="eyebrow">SOPORTE INFORMÁTICO</p>
+            <h2>Tu tecnología, siempre funcionando</h2>
+            <p>Servicio técnico especializado en diagnóstico de fallas, mantenimiento preventivo,instalación de sistemas
+              y optimización de rendimiento para computadoras y laptops.</p>
+            <div class="hero-actions"><a class="btn btn-primary" href="#servicios">Ver servicios</a><a
+                class="btn btn-light" id="heroWA2" href="#" target="_blank">Consultar ahora</a></div>
+          </div>
+        </article>
+        <article class="slide"
+          style="--bg:url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1800&q=85')">
+          <img class="slide-img" loading="lazy" decoding="async" aria-hidden="true"
+            src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=70"
+            srcset="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=70 800w, https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=70 1200w, https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1800&q=85 1800w"
+            sizes="(max-width:520px) 520px, (max-width:850px) 680px, 1800px" alt="">
+          <div class="hero-content">
+            <p class="eyebrow">REDES Y SOLUCIONES</p>
+            <h2>Resolvemos tus problemas tecnológicos</h2>
+            <p>Soluciones informáticas a la medida de personas, profesionales y empresas, Especialistas en redes,
+              mantenimiento de impresoras, software y soporte técnico especializado.</p>
+            <div class="hero-actions"><a class="btn btn-primary" href="#cotizacion">Cotizar servicio</a><a
+                class="btn btn-light" id="heroWA3" href="#" target="_blank">WhatsApp</a></div>
+          </div>
+        </article>
+
+        <article class="slide" style="--bg:url('assets/nicode-poster.jpg')">
+          <img class="slide-img" loading="lazy" decoding="async" aria-hidden="true"
+            src="assets/nicode-poster.jpg"
+            srcset="assets/nicode-poster.jpg 1800w"
+            sizes="(max-width:520px) 520px, (max-width:850px) 680px, 1800px" alt="NICODE poster">
+          <div class="hero-content">
+            <p class="eyebrow">NICODE SERVICIOS INFORMÁTICOS</p>
+            <h2>Tu equipo en <span>buenas manos</span></h2>
+            <p>Soluciones integrales de TI: Soporte presencial y en línea, mantenimiento de hardware y software,
+              optimización de rendimiento, instalación de programas y recuperación segura de datos.</p>
+            <div class="hero-actions"><a class="btn btn-primary" href="#cotizacion">Cotizar servicio</a><a
+                class="btn btn-light"
+                href="https://wa.me/73276061?text=Hola%20NICODE%2C%20necesito%20soporte%20inform%C3%A1tico."
+                target="_blank">WhatsApp</a></div>
+          </div>
+        </article>
+            <article class="slide" style="--bg:url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1800&q=85')">
+              <img class="slide-img" loading="lazy" decoding="async" aria-hidden="true"
+                src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=70"
+                srcset="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=70 800w, https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=70 1200w, https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1800&q=85 1800w"
+                sizes="(max-width:520px) 520px, (max-width:850px) 680px, 1800px" alt="Mantenimiento de PC">
+              <div class="hero-content">
+                <p class="eyebrow">MANTENIMIENTO</p>
+                <h2>Mantenimiento de <span>PC y laptops</span></h2>
+                <p>Mantenimiento preventivo y correctivo para mantener tus equipos funcionando con máximo rendimiento.</p>
+                <div class="hero-actions"><a class="btn btn-primary" href="#servicios">Más información</a><a
+                    class="btn btn-light" href="#contacto">Contactar</a></div>
+              </div>
+            </article>
+
+            <article class="slide" style="--bg:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1800&q=85')">
+              <img class="slide-img" loading="lazy" decoding="async" aria-hidden="true"
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=70"
+                srcset="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=70 800w, https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=70 1200w, https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1800&q=85 1800w"
+                sizes="(max-width:520px) 520px, (max-width:850px) 680px, 1800px" alt="Instalación de software">
+              <div class="hero-content">
+                <p class="eyebrow">INSTALACIÓN</p>
+                <h2>Instalación y <span>configuración de software</span></h2>
+                <p>Instalamos y configuramos sistemas, aplicaciones y controladores asegurando compatibilidad y seguridad.</p>
+                <div class="hero-actions"><a class="btn btn-primary" href="#servicios">Ver servicios</a><a
+                    class="btn btn-light" href="#formulario">Solicitar</a></div>
+              </div>
+            </article>
+
+            <article class="slide" style="--bg:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1800&q=85')">
+              <img class="slide-img" loading="lazy" decoding="async" aria-hidden="true"
+                src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=70"
+                srcset="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=70 800w, https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=70 1200w, https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1800&q=85 1800w"
+                sizes="(max-width:520px) 520px, (max-width:850px) 680px, 1800px" alt="Redes informáticas">
+              <div class="hero-content">
+                <p class="eyebrow">REDES</p>
+                <h2>Redes y <span>conectividad</span></h2>
+                <p>Instalación y reparación de redes Wi‑Fi y cableadas para empresas y hogares con cobertura y seguridad.</p>
+                <div class="hero-actions"><a class="btn btn-primary" href="#servicios">Ver más</a><a
+                    class="btn btn-light" href="#contacto">Contactar</a></div>
+              </div>
+            </article>
+
+            <article class="slide" style="--bg:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1800&q=85')">
+              <img class="slide-img" loading="lazy" decoding="async" aria-hidden="true"
+                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=70"
+                srcset="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=70 800w, https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=70 1200w, https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1800&q=85 1800w"
+                sizes="(max-width:520px) 520px, (max-width:850px) 680px, 1800px" alt="Soporte e impresoras">
+              <div class="hero-content">
+                <p class="eyebrow">SOPORTE</p>
+                <h2>Soporte técnico y <span>servicio de impresoras</span></h2>
+                <p>Atención técnica, reparación y mantenimiento de impresoras, hardware y sistemas para tu negocio.</p>
+                <div class="hero-actions"><a class="btn btn-primary" href="#servicios">Cotizar</a><a
+                    class="btn btn-light" href="#cotizacion">Solicitar</a></div>
+              </div>
+            </article>
+
+            <article class="slide" style="--bg:url('assets/nicode-poster.jpg')">
+              <img class="slide-img" loading="lazy" decoding="async" aria-hidden="true"
+                src="assets/nicode-poster.jpg"
+                srcset="assets/nicode-poster.jpg 1800w"
+                sizes="(max-width:520px) 520px, (max-width:850px) 680px, 1800px" alt="NICODE poster">
+              <div class="hero-content">
+                <p class="eyebrow">NICODE SERVICIOS INFORMÁTICOS</p>
+                <h2>Tu equipo en <span>buenas manos</span></h2>
+                <p>Soluciones integrales de TI: Soporte presencial y en línea, mantenimiento de hardware y software,
+                  optimización de rendimiento, instalación de programas y recuperación segura de datos.</p>
+                <div class="hero-actions"><a class="btn btn-primary" href="#cotizacion">Cotizar servicio</a><a
+                    class="btn btn-light"
+                    href="https://wa.me/73276061?text=Hola%20NICODE%2C%20necesito%20soporte%20inform%C3%A1tico."
+                    target="_blank">WhatsApp</a></div>
+              </div>
+            </article>
+      </div>
+      <button class="slider-arrow prev" aria-label="Anterior">‹</button><button class="slider-arrow next"
+        aria-label="Siguiente">›</button>
+      <div class="dots" id="dots"></div>
+    </section>
+
+    <section class="intro section" id="nosotros">
+      <div>
+        <p class="eyebrow blue">NICODE SERVICIOS INFORMÁTICOS</p>
+        <h2>Estamos aquí para ayudarte</h2>
+        <p>Brindamos soluciones prácticas y profesionales para que tu tecnología trabaje a favor de tu negocio. Atención
+          clara, rápida y orientada a resultados.</p>
+      </div>
+      <div class="stats">
+        <div><strong>+50</strong><span>Servicios realizados</span></div>
+        <div><strong>24/7</strong><span>Asistencia tecnológica</span></div>
+        <div><strong>100%</strong><span>Atención personalizada</span></div>
+      </div>
+    </section>
+
+    <section class="section services services-v2" id="servicios">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow blue">LO QUE HACEMOS</p>
+          <h2>Nuestros servicios</h2>
+        </div>
+        <p>Diagnóstico certero y solución definitiva de problemas informáticos de hardware y software.</p>
+      </div>
+      <div class="service-grid">
+        <article class="card">
+          <div class="icon">🖥️</div>
+          <h3>Soporte técnico</h3>
+          <p>Diagnóstico y solución de problemas informáticos,Restauramos la velocidad, estabilidad y seguridad de tus
+            equipos de cómputo y redes.</p><button class="quote-service" data-service="Soporte técnico">Cotizar servicio
+            →</button>
+        </article>
+        <article class="card">
+          <div class="icon">🔧</div>
+          <h3>Mantenimiento de PC</h3>
+          <p>Mantenimiento preventivo y correctivo de hardware y software para computadoras y laptops.</p><button
+            class="quote-service" data-service="Mantenimiento de PC">Cotizar servicio →</button>
+        </article>
+        <article class="card">
+          <div class="icon">⚙️</div>
+          <h3>Instalación de software</h3>
+          <p>Instalación, configuración y actualización de sistemas operativos, paquetes de software y controladores.
+          </p><button class="quote-service" data-service="Instalación de software">Cotizar servicio →</button>
+        </article>
+        <article class="card">
+          <div class="icon">🌐</div>
+          <h3>Redes informáticas</h3>
+          <p>Configuración y reparación de redes Wi-Fi y cableadas (LAN).Solucionamos problemas de cobertura, caídas de
+            señal, lentitud e interrupciones de internet para hogares y empresas</p><button class="quote-service"
+            data-service="Redes informáticas">Cotizar servicio →</button>
+        </article>
+        <article class="card">
+          <div class="icon">🖨️</div>
+          <h3>Impresoras</h3>
+          <p>Instalación, configuración en red y soporte técnico de impresoras y escáneres.</p><button
+            class="quote-service" data-service="Soporte de impresoras">Cotizar servicio →</button>
+        </article>
+        <article class="card">
+          <div class="icon">🚀</div>
+          <h3>Optimización</h3>
+          <p>Eliminamos la lentitud, optimizamos el consumo de recursos y repotenciamos el rendimiento de tu hardware.
+          </p><button class="quote-service" data-service="Optimización de equipos">Cotizar servicio →</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="why section">
+      <div class="section-heading centered">
+        <p class="eyebrow blue">¿POR QUÉ NICODE?</p>
+        <h2>Una solución clara para cada problema</h2>
+      </div>
+      <div class="why-grid">
+        <div><b>01</b>
+          <h3>Profesional</h3>
+          <p>Trabajo ordenado y orientado a resultados.</p>
+        </div>
+        <div><b>02</b>
+          <h3>Rápido</h3>
+          <p>Atención directa para resolver tus necesidades.</p>
+        </div>
+        <div><b>03</b>
+          <h3>Confiable</h3>
+          <p>Comunicación transparente durante el servicio.</p>
+        </div>
+        <div><b>04</b>
+          <h3>Personalizado</h3>
+          <p>La solución se adapta a tu equipo y presupuesto.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta section" id="cotizacion">
+      <div>
+        <p class="eyebrow">COTIZACIÓN</p>
+        <h2>¿Necesitas ayuda informática?</h2>
+        <p>Cuéntanos qué necesitas y solicita una cotización sin compromiso.</p>
+      </div><a class="btn btn-primary" href="#formulario">Solicitar cotización</a>
+    </section>
+
+    <section class="section form-section" id="formulario">
+      <div class="form-copy">
+        <p class="eyebrow blue">CONTACTO DIRECTO</p>
+        <h2>Cuéntanos qué necesitas</h2>
+        <p>Completa el formulario y te llevaremos a WhatsApp con la información de tu solicitud.</p>
+        <div class="contact-mini"><span>💬</span>
+          <div><b>Respuesta por WhatsApp</b><small>Rápida y directa</small></div>
+        </div>
+      </div>
+      <form id="quoteForm">
+        <label>Nombre<input id="name" required placeholder="Tu nombre"></label>
+        <label>WhatsApp<input id="phone" required placeholder="Tu número"></label>
+        <label>Servicio<select id="service">
+            <option>Soporte técnico</option>
+            <option>Soporte técnico Remoto</option>
+            <option>Mantenimiento de PC</option>
+            <option>Instalación de software</option>
+            <option>Redes informáticas</option>
+            <option>Impresoras</option>
+            <option>Optimización de equipos</option>
+          </select></label>
+        <label>¿Qué necesitas?<textarea id="message" required
+            placeholder="Describe brevemente el problema o servicio"></textarea></label>
+
+        <div id="captchaPlaceholder"></div>
+
+        <button class="btn btn-primary full" type="submit">Enviar a WhatsApp →</button>
+      </form>
+    </section>
+
+    <section class="contact section" id="contacto">
+      <div>
+        <p class="eyebrow blue">HABLEMOS</p>
+        <h2>¿Listo para resolverlo?</h2>
+        <p>Escríbenos y cuéntanos tu necesidad informática.</p>
+      </div><a class="btn btn-whatsapp big" id="contactWA" href="#" target="_blank">💬 Contactar por WhatsApp</a>
+    </section>
+    
+    <section class="testimonials section" id="testimonials">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow blue">TESTIMONIOS</p>
+          <h2>Lo que dicen nuestros clientes</h2>
+        </div>
+        <p>Opiniones reales de clientes satisfechos con fotos y recomendaciones.</p>
+      </div>
+      <div class="testimonials-grid" id="testimonialsGrid">
+        <!-- Testimonials rendered dynamically -->
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-brand"><strong>NICODE</strong>
+      <span>SERVICIOS INFORMÁTICOS</span></br>
+      <span>Correo electronico: ✉️ nicodesoft@gmail.com</span></br>
+      <span>Telefono:📞591-72558600-591-73276061</span></br>
+
+    </div>
+    <p>Tecnología confiable para potenciar tu productividad y proteger tu información.</p><small>© 2026 NICODE SERVICIOS
+      INFORMÁTICOS. Todos los derechos reservados.</small>
+  </footer>
+  <section class="wa-bot" id="waBot" aria-label="Asistente de WhatsApp" aria-hidden="true">
+    <div class="wa-bot-header">
+      <div><strong>Asistente NICODE</strong><small>Te orientamos por WhatsApp</small></div>
+      <button type="button" id="waBotClose" aria-label="Cerrar asistente">×</button>
+    </div>
+    <div class="wa-bot-messages" id="waBotMessages" aria-live="polite"></div>
+    <div class="wa-bot-options" id="waBotOptions"></div>
+    <form class="wa-bot-input" id="waBotForm">
+      <input id="waBotInput" autocomplete="off" placeholder="Escribe tu respuesta..." aria-label="Respuesta">
+      <button type="submit" aria-label="Enviar respuesta">➤</button>
+    </form>
+  </section>
+  <button class="floating-wa" id="floatingWA" type="button" aria-label="Abrir asistente de WhatsApp" aria-expanded="false">⌕</button>
+  <div class="captcha-gate" id="captchaGate" role="dialog" aria-modal="true" aria-labelledby="captchaGateTitle">
+    <div class="captcha-gate-panel">
+      <h2 id="captchaGateTitle">Verificación de seguridad</h2>
+      <p>Completa el puzzle para ingresar al sitio.</p>
+      <div class="captcha-block">
+        <div class="captcha-heading">
+          <label class="captcha-label" for="captchaSlider">Verificación</label>
+          <button class="captcha-refresh" id="captchaRefresh" type="button" aria-label="Generar otro puzzle">Nuevo puzzle</button>
+        </div>
+        <p class="captcha-instruction">Desliza la pieza hasta completar la imagen.</p>
+        <canvas class="captcha-canvas" id="captchaCanvas" width="360" height="160" role="img" aria-label="Puzzle visual con una pieza faltante"></canvas>
+        <input class="captcha-slider" id="captchaSlider" type="range" min="0" max="312" value="0" aria-label="Posición de la pieza del puzzle">
+        <small class="captcha-help" id="captchaStatus" aria-live="polite">Mueve el control para encajar la pieza.</small>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
