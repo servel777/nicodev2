@@ -221,6 +221,161 @@ quoteForm.addEventListener("submit",e=>{
   quoteForm.reset();
 });
 
+const testimonialEntries = [
+  {
+    quote: "Me explicaron cada paso y dejaron mi computadora funcionando mucho mejor.",
+    name: "Andrea Rojas",
+    service: "Soporte técnico",
+    rating: 5
+  },
+  {
+    quote: "La conexión de la oficina quedó estable y ahora podemos trabajar sin interrupciones.",
+    name: "Diego Vargas",
+    service: "Redes y conectividad",
+    rating: 5
+  },
+  {
+    quote: "Recibí un mantenimiento completo y consejos útiles para cuidar mi laptop.",
+    name: "Camila Flores",
+    service: "Mantenimiento de equipos",
+    rating: 5
+  },
+  {
+    quote: "La impresora volvió a funcionar y también quedó configurada para toda la oficina.",
+    name: "Mateo Salazar",
+    service: "Soporte de impresoras",
+    rating: 5
+  },
+  {
+    quote: "Me ayudaron a instalar los programas que necesitaba de forma rápida y clara.",
+    name: "Valeria Quiroga",
+    service: "Instalación de software",
+    rating: 5
+  },
+  {
+    quote: "Mi equipo estaba muy lento; después de la optimización volvió a responder bien.",
+    name: "Gabriel Méndez",
+    service: "Optimización de equipos",
+    rating: 5
+  }
+];
+const testimonialAvatarImages = [
+  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80",
+  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&h=120&q=80",
+  "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&h=120&q=80",
+  "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&h=120&q=80",
+  "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&h=120&q=80",
+  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80"
+];
+const testimonialCarousel = document.getElementById("testimonialCarousel");
+const testimonialQuote = document.getElementById("testimonialQuote");
+const testimonialName = document.getElementById("testimonialName");
+const testimonialService = document.getElementById("testimonialService");
+const testimonialAvatar = document.getElementById("testimonialAvatar");
+const testimonialStars = document.getElementById("testimonialStars");
+const testimonialCounter = document.getElementById("testimonialCounter");
+const testimonialDots = document.getElementById("testimonialDots");
+const testimonialReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+let activeTestimonial = 0;
+let testimonialTimer = null;
+let testimonialInView = false;
+let previousTestimonialAvatar = "";
+let testimonialTransitionTimer = null;
+
+function randomTestimonialAvatar() {
+  const availableImages = testimonialAvatarImages.filter(image => image !== previousTestimonialAvatar);
+  const image = availableImages[Math.floor(Math.random() * availableImages.length)];
+  previousTestimonialAvatar = image;
+  return image;
+}
+
+function renderTestimonial(index) {
+  activeTestimonial = (index + testimonialEntries.length) % testimonialEntries.length;
+  const entry = testimonialEntries[activeTestimonial];
+  window.clearTimeout(testimonialTransitionTimer);
+  testimonialCarousel.classList.add("is-changing");
+  testimonialTransitionTimer = window.setTimeout(() => {
+    testimonialQuote.textContent = `“${entry.quote}”`;
+    testimonialName.textContent = entry.name;
+    testimonialService.textContent = entry.service;
+    testimonialAvatar.src = randomTestimonialAvatar();
+    testimonialStars.textContent = "★".repeat(entry.rating) + "☆".repeat(5 - entry.rating);
+    testimonialStars.setAttribute("aria-label", `${entry.rating} de 5 estrellas, calificación ficticia`);
+    testimonialCounter.textContent = `${String(activeTestimonial + 1).padStart(2, "0")} / ${String(testimonialEntries.length).padStart(2, "0")}`;
+    [...testimonialDots.children].forEach((dot, dotIndex) => {
+      const isActive = dotIndex === activeTestimonial;
+      dot.classList.toggle("active", isActive);
+      dot.setAttribute("aria-current", String(isActive));
+    });
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => testimonialCarousel.classList.remove("is-changing"));
+    });
+  });
+}
+
+function stopTestimonialRotation() {
+  window.clearInterval(testimonialTimer);
+  testimonialTimer = null;
+}
+
+function startTestimonialRotation() {
+  if (
+    testimonialTimer === null &&
+    testimonialInView &&
+    !document.hidden &&
+    !testimonialReducedMotion.matches &&
+    !testimonialCarousel.matches(":hover") &&
+    !testimonialCarousel.contains(document.activeElement)
+  ) {
+    testimonialTimer = window.setInterval(() => {
+      renderTestimonial(activeTestimonial + 1);
+    }, 4500);
+  }
+}
+
+testimonialEntries.forEach((_, index) => {
+  const dot = document.createElement("button");
+  dot.type = "button";
+  dot.className = "testimonial-dot";
+  dot.setAttribute("aria-label", `Mostrar opinión ${index + 1} de ${testimonialEntries.length}`);
+  dot.addEventListener("click", () => {
+    renderTestimonial(index);
+    stopTestimonialRotation();
+    startTestimonialRotation();
+  });
+  testimonialDots.appendChild(dot);
+});
+document.getElementById("testimonialPrev").addEventListener("click", () => {
+  renderTestimonial(activeTestimonial - 1);
+  stopTestimonialRotation();
+  startTestimonialRotation();
+});
+document.getElementById("testimonialNext").addEventListener("click", () => {
+  renderTestimonial(activeTestimonial + 1);
+  stopTestimonialRotation();
+  startTestimonialRotation();
+});
+testimonialCarousel.addEventListener("mouseenter", stopTestimonialRotation);
+testimonialCarousel.addEventListener("mouseleave", startTestimonialRotation);
+testimonialCarousel.addEventListener("focusin", stopTestimonialRotation);
+testimonialCarousel.addEventListener("focusout", event => {
+  if (!testimonialCarousel.contains(event.relatedTarget)) startTestimonialRotation();
+});
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) stopTestimonialRotation();
+  else startTestimonialRotation();
+});
+testimonialReducedMotion.addEventListener("change", () => {
+  if (testimonialReducedMotion.matches) stopTestimonialRotation();
+  else startTestimonialRotation();
+});
+new IntersectionObserver(entries => {
+  testimonialInView = entries.some(entry => entry.isIntersecting);
+  if (testimonialInView) startTestimonialRotation();
+  else stopTestimonialRotation();
+}, {threshold: 0.35}).observe(testimonialCarousel);
+renderTestimonial(0);
+
 const waBot = document.getElementById("waBot");
 const waBotMessages = document.getElementById("waBotMessages");
 const waBotOptions = document.getElementById("waBotOptions");
