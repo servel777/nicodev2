@@ -22,8 +22,8 @@
       <a href="#inicio">Inicio</a><a href="#nosotros">Nosotros</a><a href="#servicios">Servicios</a><a
         href="#cotizacion">Cotización</a><a href="#contacto">Contacto</a>
     </nav>
-    <a class="btn btn-whatsapp header-wa" id="headerWhatsApp" href="#" target="_blank">WhatsApp</a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+    <a class="btn btn-whatsapp header-wa" id="headerWhatsApp" href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-controls="nav" aria-expanded="false">☰</button>
   </header>
 
   <main>
@@ -41,7 +41,7 @@
             <p>Infraestructura tecnológica confiable, segura y siempre disponible. Ofrecemos asistencia técnica
               profesional para proteger, optimizar y potenciar tus equipos, redes y sistemas.</p>
             <div class="hero-actions"><a class="btn btn-primary" href="#cotizacion">Solicitar cotización</a><a
-                class="btn btn-light" id="heroWA1" href="#" target="_blank">Hablar por WhatsApp</a></div>
+                class="btn btn-light" id="heroWA1" href="#" target="_blank" rel="noopener noreferrer">Hablar por WhatsApp</a></div>
           </div>
         </article>
         <article class="slide"
@@ -56,7 +56,7 @@
             <p>Servicio técnico especializado en diagnóstico de fallas, mantenimiento preventivo,instalación de sistemas
               y optimización de rendimiento para computadoras y laptops.</p>
             <div class="hero-actions"><a class="btn btn-primary" href="#servicios">Ver servicios</a><a
-                class="btn btn-light" id="heroWA2" href="#" target="_blank">Consultar ahora</a></div>
+                class="btn btn-light" id="heroWA2" href="#" target="_blank" rel="noopener noreferrer">Consultar ahora</a></div>
           </div>
         </article>
         <article class="slide"
@@ -71,7 +71,7 @@
             <p>Soluciones informáticas a la medida de personas, profesionales y empresas, Especialistas en redes,
               mantenimiento de impresoras, software y soporte técnico especializado.</p>
             <div class="hero-actions"><a class="btn btn-primary" href="#cotizacion">Cotizar servicio</a><a
-                class="btn btn-light" id="heroWA3" href="#" target="_blank">WhatsApp</a></div>
+                class="btn btn-light" id="heroWA3" href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
           </div>
         </article>
 
@@ -86,9 +86,7 @@
             <p>Soluciones integrales de TI: Soporte presencial y en línea, mantenimiento de hardware y software,
               optimización de rendimiento, instalación de programas y recuperación segura de datos.</p>
             <div class="hero-actions"><a class="btn btn-primary" href="#cotizacion">Cotizar servicio</a><a
-                class="btn btn-light"
-                href="https://wa.me/73276061?text=Hola%20NICODE%2C%20necesito%20soporte%20inform%C3%A1tico."
-                target="_blank">WhatsApp</a></div>
+                class="btn btn-light" id="heroWA4" href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
           </div>
         </article>
             <article class="slide" style="--bg:url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1800&q=85')">
@@ -158,9 +156,7 @@
                 <p>Soluciones integrales de TI: Soporte presencial y en línea, mantenimiento de hardware y software,
                   optimización de rendimiento, instalación de programas y recuperación segura de datos.</p>
                 <div class="hero-actions"><a class="btn btn-primary" href="#cotizacion">Cotizar servicio</a><a
-                    class="btn btn-light"
-                    href="https://wa.me/73276061?text=Hola%20NICODE%2C%20necesito%20soporte%20inform%C3%A1tico."
-                    target="_blank">WhatsApp</a></div>
+                    class="btn btn-light" id="heroWA5" href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
               </div>
             </article>
       </div>
@@ -222,7 +218,7 @@
           <div class="icon">🖨️</div>
           <h3>Impresoras</h3>
           <p>Instalación, configuración en red y soporte técnico de impresoras y escáneres.</p><button
-            class="quote-service" data-service="Soporte de impresoras">Cotizar servicio →</button>
+            class="quote-service" data-service="Impresoras">Cotizar servicio →</button>
         </article>
         <article class="card">
           <div class="icon">🚀</div>
@@ -276,9 +272,10 @@
         </div>
       </div>
       <form id="quoteForm">
-        <label>Nombre<input id="name" required placeholder="Tu nombre"></label>
-        <label>WhatsApp<input id="phone" required placeholder="Tu número"></label>
-        <label>Servicio<select id="service">
+        <label>Nombre<input id="name" name="name" autocomplete="name" maxlength="120" required placeholder="Tu nombre"></label>
+        <label>WhatsApp<input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40" required placeholder="Tu número"></label>
+        <label>Servicio<select id="service" name="service" required>
+            <option value="" disabled selected>Selecciona un servicio</option>
             <option>Soporte técnico</option>
             <option>Soporte técnico Remoto</option>
             <option>Mantenimiento de PC</option>
@@ -287,12 +284,11 @@
             <option>Impresoras</option>
             <option>Optimización de equipos</option>
           </select></label>
-        <label>¿Qué necesitas?<textarea id="message" required
+        <label>¿Qué necesitas?<textarea id="message" name="message" maxlength="2000" required
             placeholder="Describe brevemente el problema o servicio"></textarea></label>
 
-        <div id="captchaPlaceholder"></div>
-
         <button class="btn btn-primary full" type="submit">Enviar a WhatsApp →</button>
+        <p class="form-status" id="quoteStatus" role="status" aria-live="polite"></p>
       </form>
     </section>
 
@@ -301,19 +297,35 @@
         <p class="eyebrow blue">HABLEMOS</p>
         <h2>¿Listo para resolverlo?</h2>
         <p>Escríbenos y cuéntanos tu necesidad informática.</p>
-      </div><a class="btn btn-whatsapp big" id="contactWA" href="#" target="_blank">💬 Contactar por WhatsApp</a>
+      </div>
+      <a class="btn btn-whatsapp big" id="contactWA" href="#" target="_blank" rel="noopener noreferrer">💬 Contactar por WhatsApp</a>
     </section>
     
-    <section class="testimonials section" id="testimonials">
+    <section class="faq section" id="preguntas">
       <div class="section-heading">
         <div>
-          <p class="eyebrow blue">TESTIMONIOS</p>
-          <h2>Lo que dicen nuestros clientes</h2>
+          <p class="eyebrow blue">AYUDA RÁPIDA</p>
+          <h2>Preguntas frecuentes</h2>
         </div>
-        <p>Opiniones reales de clientes satisfechos con fotos y recomendaciones.</p>
+        <p>Resuelve tus dudas o abre el asistente si necesitas ayuda con tu equipo.</p>
       </div>
-      <div class="testimonials-grid" id="testimonialsGrid">
-        <!-- Testimonials rendered dynamically -->
+      <div class="faq-list">
+        <details>
+          <summary>¿Qué información envío para pedir soporte?</summary>
+          <p>Cuéntanos qué equipo tienes, su marca y modelo si los conoces, qué problema presenta y desde cuándo ocurre.</p>
+        </details>
+        <details>
+          <summary>¿Qué servicios ofrece NICODE?</summary>
+          <p>Soporte técnico, mantenimiento de PC y laptops, instalación de software, redes, impresoras y optimización de equipos.</p>
+        </details>
+        <details>
+          <summary>¿Cómo solicito una cotización?</summary>
+          <p>Completa el formulario con tus datos y la necesidad. WhatsApp se abrirá con el mensaje listo para que lo revises y lo envíes.</p>
+        </details>
+        <details>
+          <summary>¿Puedo pedir ayuda directamente por WhatsApp?</summary>
+          <p>Sí. Usa el botón flotante para recibir orientación automática y continuar por WhatsApp con los datos de tu solicitud.</p>
+        </details>
       </div>
     </section>
   </main>
@@ -327,35 +339,19 @@
     <p>Tecnología confiable para potenciar tu productividad y proteger tu información.</p><small>© 2026 NICODE SERVICIOS
       INFORMÁTICOS. Todos los derechos reservados.</small>
   </footer>
-  <section class="wa-bot" id="waBot" aria-label="Asistente de WhatsApp" aria-hidden="true">
+  <section class="wa-bot" id="waBot" role="dialog" aria-label="Asistente de NICODE" aria-hidden="true" inert>
     <div class="wa-bot-header">
-      <div><strong>Asistente NICODE</strong><small>Te orientamos por WhatsApp</small></div>
+      <div><strong>Asistente NICODE</strong><small>Orientación automática · WhatsApp</small></div>
       <button type="button" id="waBotClose" aria-label="Cerrar asistente">×</button>
     </div>
     <div class="wa-bot-messages" id="waBotMessages" aria-live="polite"></div>
     <div class="wa-bot-options" id="waBotOptions"></div>
     <form class="wa-bot-input" id="waBotForm">
-      <input id="waBotInput" autocomplete="off" placeholder="Escribe tu respuesta..." aria-label="Respuesta">
+      <input id="waBotInput" autocomplete="off" maxlength="500" placeholder="Escribe tu respuesta..." aria-label="Respuesta" required>
       <button type="submit" aria-label="Enviar respuesta">➤</button>
     </form>
   </section>
-  <button class="floating-wa" id="floatingWA" type="button" aria-label="Abrir asistente de WhatsApp" aria-expanded="false">⌕</button>
-  <div class="captcha-gate" id="captchaGate" role="dialog" aria-modal="true" aria-labelledby="captchaGateTitle">
-    <div class="captcha-gate-panel">
-      <h2 id="captchaGateTitle">Verificación de seguridad</h2>
-      <p>Completa el puzzle para ingresar al sitio.</p>
-      <div class="captcha-block">
-        <div class="captcha-heading">
-          <label class="captcha-label" for="captchaSlider">Verificación</label>
-          <button class="captcha-refresh" id="captchaRefresh" type="button" aria-label="Generar otro puzzle">Nuevo puzzle</button>
-        </div>
-        <p class="captcha-instruction">Desliza la pieza hasta completar la imagen.</p>
-        <canvas class="captcha-canvas" id="captchaCanvas" width="360" height="160" role="img" aria-label="Puzzle visual con una pieza faltante"></canvas>
-        <input class="captcha-slider" id="captchaSlider" type="range" min="0" max="312" value="0" aria-label="Posición de la pieza del puzzle">
-        <small class="captcha-help" id="captchaStatus" aria-live="polite">Mueve el control para encajar la pieza.</small>
-      </div>
-    </div>
-  </div>
+  <button class="floating-wa" id="floatingWA" type="button" aria-label="Abrir asistente de WhatsApp" aria-expanded="false">💬</button>
   <script src="script.js"></script>
 </body>
 
