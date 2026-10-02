@@ -387,25 +387,32 @@
     </form>
   </section>
   <button class="floating-wa" id="floatingWA" type="button" aria-label="Abrir asistente de WhatsApp" aria-expanded="false">💬</button>
-  <div class="human-gate" id="humanGate" role="dialog" aria-modal="true" aria-labelledby="humanGateTitle"
-    aria-describedby="humanGateDescription">
-    <div class="human-gate-panel">
-      <div class="human-gate-icon" aria-hidden="true">✓</div>
+  <div class="captcha-gate" id="captchaGate" role="dialog" aria-modal="true" aria-labelledby="captchaGateTitle"
+    aria-describedby="captchaGateDescription">
+    <div class="captcha-gate-panel">
+      <div class="captcha-gate-icon" aria-hidden="true">✓</div>
       <p class="eyebrow blue">BIENVENIDO A NICODE</p>
-      <h2 id="humanGateTitle">Verifica que eres una persona</h2>
-      <p id="humanGateDescription">Confirma para continuar al sitio de NICODE.</p>
-      <form class="human-check" id="humanCheckForm">
-        <label class="human-check-option" for="humanCheck">
-          <input id="humanCheck" type="checkbox" required>
-          <span class="human-check-box" aria-hidden="true"></span>
-          <span>No soy un robot</span>
+      <h2 id="captchaGateTitle">Verificación rápida</h2>
+      <p id="captchaGateDescription">Resuelve esta suma sencilla para continuar.</p>
+      <form class="simple-captcha" id="simpleCaptchaForm">
+        <label class="simple-captcha-label" for="simpleCaptchaAnswer">
+          <span>¿Cuánto es</span>
+          <strong id="simpleCaptchaQuestion" aria-live="polite"></strong>
+          <span>?</span>
         </label>
-        <button class="btn btn-primary human-check-submit" id="humanCheckSubmit" type="submit" disabled>
-          Continuar
-          <span aria-hidden="true">→</span>
-        </button>
+        <input id="simpleCaptchaAnswer" name="captchaAnswer" type="number" inputmode="numeric" min="0" max="18"
+          step="1" autocomplete="off" placeholder="Escribe el resultado" aria-describedby="simpleCaptchaStatus" required>
+        <small class="simple-captcha-status" id="simpleCaptchaStatus" role="status" aria-live="polite">
+          Introduce el resultado de la suma.
+        </small>
+        <div class="simple-captcha-actions">
+          <button class="simple-captcha-refresh" id="simpleCaptchaRefresh" type="button">Otra suma</button>
+          <button class="btn btn-primary simple-captcha-submit" id="simpleCaptchaSubmit" type="submit" disabled>
+            Verificar y continuar <span aria-hidden="true">→</span>
+          </button>
+        </div>
       </form>
-      <small class="human-check-note">Verificación básica. No recopilamos ni guardamos información.</small>
+      <small class="simple-captcha-note">Verificación sencilla para continuar al sitio.</small>
     </div>
   </div>
   <script src="script.js"></script>

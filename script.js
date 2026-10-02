@@ -2,10 +2,13 @@ const WHATSAPP_NUMBER = "59172558600";
 const BUSINESS_PHONE = "+591 72558600";
 function wa(message){return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;}
 
-const humanGate = document.getElementById("humanGate");
-const humanCheckForm = document.getElementById("humanCheckForm");
-const humanCheck = document.getElementById("humanCheck");
-const humanCheckSubmit = document.getElementById("humanCheckSubmit");
+const captchaGate = document.getElementById("captchaGate");
+const simpleCaptchaForm = document.getElementById("simpleCaptchaForm");
+const simpleCaptchaQuestion = document.getElementById("simpleCaptchaQuestion");
+const simpleCaptchaAnswer = document.getElementById("simpleCaptchaAnswer");
+const simpleCaptchaStatus = document.getElementById("simpleCaptchaStatus");
+const simpleCaptchaRefresh = document.getElementById("simpleCaptchaRefresh");
+const simpleCaptchaSubmit = document.getElementById("simpleCaptchaSubmit");
 const gatedPageElements = [
   document.getElementById("header"),
   document.querySelector("main"),
@@ -14,28 +17,57 @@ const gatedPageElements = [
   document.getElementById("floatingWA")
 ].filter(Boolean);
 
-document.body.classList.add("human-gate-open");
-gatedPageElements.forEach(element => { element.inert = true; });
-humanCheck.checked = false;
-humanCheckSubmit.disabled = true;
-humanCheck.focus();
+let captchaExpectedAnswer = 0;
 
-humanCheck.addEventListener("change", () => {
-  humanCheckSubmit.disabled = !humanCheck.checked;
+document.body.classList.add("captcha-gate-open");
+gatedPageElements.forEach(element => { element.inert = true; });
+simpleCaptchaSubmit.disabled = true;
+
+function createSimpleCaptcha() {
+  const firstNumber = Math.floor(Math.random() * 9) + 1;
+  const secondNumber = Math.floor(Math.random() * 9) + 1;
+  captchaExpectedAnswer = firstNumber + secondNumber;
+  simpleCaptchaQuestion.textContent = `${firstNumber} + ${secondNumber}`;
+  simpleCaptchaAnswer.value = "";
+  simpleCaptchaSubmit.disabled = true;
+  simpleCaptchaStatus.textContent = "Introduce el resultado de la suma.";
+  simpleCaptchaStatus.classList.remove("is-error");
+}
+
+simpleCaptchaAnswer.addEventListener("input", () => {
+  simpleCaptchaSubmit.disabled = simpleCaptchaAnswer.value.trim() === "";
+  simpleCaptchaStatus.classList.remove("is-error");
 });
 
-humanCheckForm.addEventListener("submit", event => {
-  event.preventDefault();
-  if (!humanCheck.checked) return;
+simpleCaptchaRefresh.addEventListener("click", () => {
+  createSimpleCaptcha();
+  simpleCaptchaAnswer.focus();
+});
 
-  humanCheckSubmit.disabled = true;
-  humanGate.classList.add("is-accepted");
+simpleCaptchaForm.addEventListener("submit", event => {
+  event.preventDefault();
+  if (!simpleCaptchaForm.reportValidity()) return;
+
+  if (Number(simpleCaptchaAnswer.value) !== captchaExpectedAnswer) {
+    simpleCaptchaStatus.textContent = "La respuesta no es correcta. Inténtalo de nuevo.";
+    simpleCaptchaStatus.classList.add("is-error");
+    simpleCaptchaAnswer.value = "";
+    simpleCaptchaSubmit.disabled = true;
+    simpleCaptchaAnswer.focus();
+    return;
+  }
+
+  simpleCaptchaSubmit.disabled = true;
+  captchaGate.classList.add("is-accepted");
   gatedPageElements.forEach(element => { element.inert = false; });
-  document.body.classList.remove("human-gate-open");
+  document.body.classList.remove("captcha-gate-open");
   window.setTimeout(() => {
-    humanGate.hidden = true;
+    captchaGate.hidden = true;
   }, 350);
 });
+
+createSimpleCaptcha();
+simpleCaptchaAnswer.focus();
 
 [
   "headerWhatsApp", "heroWA1", "heroWA2", "heroWA3", "heroWA4", "heroWA5", "contactWA"
