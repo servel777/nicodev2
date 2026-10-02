@@ -352,6 +352,24 @@
     </form>
   </section>
   <button class="floating-wa" id="floatingWA" type="button" aria-label="Abrir asistente de WhatsApp" aria-expanded="false">💬</button>
+  <div class="captcha-gate" id="captchaGate" role="dialog" aria-modal="true" aria-labelledby="captchaGateTitle">
+    <div class="captcha-gate-panel">
+      <div class="captcha-gate-icon" aria-hidden="true">✓</div>
+      <p class="eyebrow blue">BIENVENIDO A NICODE</p>
+      <h2 id="captchaGateTitle">Verificación de seguridad</h2>
+      <p>Completa el rompecabezas para ingresar al sitio.</p>
+      <div class="captcha-block">
+        <div class="captcha-heading">
+          <label class="captcha-label" for="captchaSlider">Verificación</label>
+          <button class="captcha-refresh" id="captchaRefresh" type="button" aria-label="Generar otro rompecabezas">Nuevo puzzle ↻</button>
+        </div>
+        <p class="captcha-instruction">Desliza la pieza hasta completar la imagen.</p>
+        <canvas class="captcha-canvas" id="captchaCanvas" width="360" height="160" role="img" aria-label="Rompecabezas de verificación visual"></canvas>
+        <input class="captcha-slider" id="captchaSlider" type="range" min="0" max="312" value="0" aria-label="Desliza la pieza para completar el rompecabezas">
+        <small class="captcha-help" id="captchaStatus" aria-live="polite">Mueve el control para encajar la pieza.</small>
+      </div>
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
 

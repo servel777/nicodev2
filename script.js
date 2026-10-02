@@ -1,6 +1,136 @@
 const WHATSAPP_NUMBER = "59172558600";
 const BUSINESS_PHONE = "+591 72558600";
 function wa(message){return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;}
+
+const captchaCanvas = document.getElementById("captchaCanvas");
+const captchaContext = captchaCanvas.getContext("2d");
+const captchaImage = document.createElement("canvas");
+captchaImage.width = captchaCanvas.width;
+captchaImage.height = captchaCanvas.height;
+const captchaImageContext = captchaImage.getContext("2d");
+const captchaGate = document.getElementById("captchaGate");
+const captchaSlider = document.getElementById("captchaSlider");
+const captchaStatus = document.getElementById("captchaStatus");
+const captchaRefresh = document.getElementById("captchaRefresh");
+const captchaPageElements = [
+  document.getElementById("header"),
+  document.querySelector("main"),
+  document.querySelector("footer"),
+  document.getElementById("waBot"),
+  document.getElementById("floatingWA")
+].filter(Boolean);
+const captchaPieceSize = 48;
+let captchaTarget = 0;
+let captchaSolved = false;
+
+document.body.classList.add("captcha-gate-open");
+captchaPageElements.forEach(element => { element.inert = true; });
+
+function tracePuzzlePiece(context, x, y) {
+  context.beginPath();
+  context.moveTo(x, y);
+  context.lineTo(x + 15, y);
+  context.bezierCurveTo(x + 11, y - 16, x + 37, y - 16, x + 33, y);
+  context.lineTo(x + captchaPieceSize, y);
+  context.lineTo(x + captchaPieceSize, y + captchaPieceSize);
+  context.lineTo(x, y + captchaPieceSize);
+  context.closePath();
+}
+
+function drawCaptcha() {
+  const context = captchaImageContext;
+  const image = captchaImage;
+  const gradient = context.createLinearGradient(0, 0, image.width, image.height);
+  gradient.addColorStop(0, "#d5eef0");
+  gradient.addColorStop(1, "#f6d7ad");
+  context.fillStyle = gradient;
+  context.fillRect(0, 0, image.width, image.height);
+
+  context.fillStyle = "#2d7b78";
+  context.beginPath();
+  context.arc(286, 38, 19, 0, Math.PI * 2);
+  context.fill();
+  context.fillStyle = "#f5a65b";
+  context.beginPath();
+  context.moveTo(0, 126);
+  context.lineTo(105, 65);
+  context.lineTo(213, 126);
+  context.lineTo(310, 76);
+  context.lineTo(360, 111);
+  context.lineTo(360, 160);
+  context.lineTo(0, 160);
+  context.fill();
+  context.fillStyle = "#28666d";
+  context.fillRect(0, 135, image.width, 25);
+
+  for (let index = 0; index < 7; index += 1) {
+    const x = 22 + index * 47;
+    context.strokeStyle = "rgba(255,255,255,0.38)";
+    context.lineWidth = 2;
+    context.beginPath();
+    context.moveTo(x, 0);
+    context.lineTo(x + 16, 26);
+    context.lineTo(x + 5, 49);
+    context.stroke();
+  }
+
+  captchaContext.clearRect(0, 0, captchaCanvas.width, captchaCanvas.height);
+  captchaContext.drawImage(image, 0, 0);
+  tracePuzzlePiece(captchaContext, captchaTarget, 57);
+  captchaContext.fillStyle = "rgba(15, 37, 51, 0.48)";
+  captchaContext.fill();
+  captchaContext.strokeStyle = "rgba(255,255,255,0.9)";
+  captchaContext.setLineDash([5, 4]);
+  captchaContext.stroke();
+  captchaContext.setLineDash([]);
+
+  const position = Number(captchaSlider.value);
+  tracePuzzlePiece(captchaContext, position, 57);
+  captchaContext.save();
+  captchaContext.clip();
+  captchaContext.drawImage(image, position - captchaTarget, 0);
+  captchaContext.restore();
+  tracePuzzlePiece(captchaContext, position, 57);
+  captchaContext.strokeStyle = "#fff";
+  captchaContext.lineWidth = 2;
+  captchaContext.stroke();
+}
+
+function buildCaptcha() {
+  captchaTarget = 120 + Math.floor(Math.random() * 130);
+  captchaSolved = false;
+  captchaSlider.disabled = false;
+  captchaRefresh.disabled = false;
+  captchaSlider.value = "0";
+  captchaStatus.textContent = "Mueve el control para encajar la pieza.";
+  captchaStatus.classList.remove("is-solved");
+  drawCaptcha();
+}
+
+captchaSlider.addEventListener("input", () => {
+  captchaSolved = Math.abs(Number(captchaSlider.value) - captchaTarget) <= 6;
+  captchaStatus.textContent = captchaSolved
+    ? "Verificación completada. Bienvenido a NICODE."
+    : "Mueve el control para encajar la pieza.";
+  captchaStatus.classList.toggle("is-solved", captchaSolved);
+  drawCaptcha();
+
+  if (captchaSolved) {
+    captchaSlider.disabled = true;
+    captchaRefresh.disabled = true;
+    captchaGate.classList.add("is-accepted");
+    captchaPageElements.forEach(element => { element.inert = false; });
+    document.body.classList.remove("captcha-gate-open");
+    window.setTimeout(() => {
+      captchaGate.hidden = true;
+      captchaSlider.disabled = false;
+    }, 450);
+  }
+});
+captchaRefresh.addEventListener("click", buildCaptcha);
+buildCaptcha();
+captchaSlider.focus();
+
 [
   "headerWhatsApp", "heroWA1", "heroWA2", "heroWA3", "heroWA4", "heroWA5", "contactWA"
 ].forEach(id=>{
